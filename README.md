@@ -1,4 +1,4 @@
-## Objectif : coder un minishell en C
+Objectif : coder un minishell en C
 
 ## Le projet
 ## Le shell
