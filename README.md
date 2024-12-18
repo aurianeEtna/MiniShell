@@ -1,6 +1,6 @@
 ## Objectif : coder un minishell en C
 
-## LE PROJET
+## Le projet
 ## Le shell
 l'interface entre l'utilisateur et le noyau, qui permet à l'utilisateur de communiquer avec le système d’exploitation par l'intermédiaire d'un langage de commandes. L'utilisateur peut entrer des commandes dans le terminal. Grâce à l’interpréteur de ligne de commande (tel que bash ou zsh qui sont des shells), les commandes entrées sont exécutées. --> On va créer notre propre petit shell.
 
@@ -34,7 +34,7 @@ Identifier les etapes clés:
 Pour cela on va énormément utiliser execve(). Il faut par contre découper la chaine de charactère comme il se doit pour pouvoir la passer à execve. Là réside la difficulté du projet.
 
 ## Dificultés rencontrées :
-## 1. NON-GESTION DES COMMANDES COMPLEXES / LE SHELL N'EXECUTE QUE LES COMMANDES SIMPLES
+## 1. Non gestion des commandes simples
 Au depart, je me rends compte qu'il y a des commandes pour lesquelles ça fonctionne et d'autres pour lesquelles ça ne fonctionne pas. 
 Exemple : 
 - afficher la date ou un ls basique, ça marche. 
@@ -44,11 +44,11 @@ Exemple :
 Donc, à ce stade on exécute un certain nombre de commande afin de tester la validité de notre programme. Mais, pour des commandes plus complexes, dont la taille est supérieure à 1, comme ls -a, un simple exec de l'input n'est pas suffisant. Et d'ailleurs, la commande ne s'exécute pas. Le problème, c'est qu'à ce stade le code ne fonctionnait pas pour des commandes complexes, comme ls -l. En fait, je me suis rendu compte que le shell ne gérait que des commandes simples sans arguments. Par exemple, si je voulais exécuter un ls -l, ça échouait. Pour corriger cela : 
 1/ Il fallait donc découper l’entrée utilisateur en une commande et ses arguments. L'une des façons de faire était d'utiliser strtok pour diviser la chaîne en fonction des espaces.
 
-## 2. OUBLI DE L'IMPORT DES BONNES LIBRAIRIES => SOUVENT, LE CODE CRASH.
+## 2. Oubli de l'import des bonnes librairies
 Oubli de l'ajout des bonnes librairies -> par exemple, pour la fonction exit(0), il fallait ajouter la librairie #include <stdlib.h>
 
 
-## ETAPES
+## Etapes
 ## 1. Manipulation des tokens
 Pour chaques lignes de commandes envoyée à votre programme, plein de choses seront faites mais la plus importante des choses à faire est de se créer une liste chainée de token pour chaques éléments de la ligne de commande.
 
